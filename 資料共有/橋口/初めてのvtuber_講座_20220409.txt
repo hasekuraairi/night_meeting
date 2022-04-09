@@ -1,0 +1,41 @@
+【概要】
+バーチャルユーチューバーになる。
+
+【参考サイト】
+●YouTubeでVtuberになる方法【4STEPで分かりやすく紹介】
+https://www.youtube.com/watch?v=TYUt52D-yM4
+●【裏技】恋声とVoicemodを併用してノイズが無い女声男声を簡単に出す方法！
+https://www.youtube.com/watch?v=uWGVePCA_nY&t=353
+
+【事前準備】
+・スマホ
+　・REALITY
+・PC（今回はWindows）
+　・LetsView
+　https://letsview.com/jp/
+　・OBS
+　https://obsproject.com/ja/download
+　・manycam（※Web会議で利用する場合）
+　https://manycam.com/
+
+●Vituber体験接続イメージ
+REALITY(スマホ)：Vtuberのモデル作成/モーションキャプチャー
+↓
+LetsView(PC)：スマホ画面をPCと連携
+↓
+OBS(PC)：連携画面を表示/フィルター(グリーンバック除去)
+↓
+manycam(PC)：連携画面をカメラ映像として認識し会議アプリで利用
+
+
+●ボイスチェンジ
+恋声：ボイスチェンジ
+http://koigoemoe.g2.xrea.com/koigoe/koigoe.html
+Voicemod（※Web会議で利用する場合）
+https://www.voicemod.net/ja/voice-changer-for-video-call-facetime/
+VB-Audio Virtual Cableのダウンロードページ：恋声、Voicemodを繋ぐため
+https://vb-audio.com/Cable/
+
+
+
+
