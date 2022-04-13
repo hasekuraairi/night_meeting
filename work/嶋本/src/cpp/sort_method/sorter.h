@@ -12,7 +12,7 @@ private:
     std::vector<int> data;
     std::vector<int> sortedData;
 public:
-    Sorter(std::vector<int> data);
+    Sorter(std::vector<int> &data);
     ~Sorter();
 
     // ソート群
@@ -24,7 +24,7 @@ public:
     void showSortedData();
 };
 
-Sorter::Sorter(std::vector<int> data) {
+Sorter::Sorter(std::vector<int> &data) {
     this->data = data;
 }
 
