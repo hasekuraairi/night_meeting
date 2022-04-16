@@ -27,7 +27,7 @@ void Sorter::selectSort() {
     std::copy(this->data.begin(), this->data.end(), std::back_inserter(data));
 
     for (int i = 0; i < data.size() - 1; ++i) {
-        std::pair<int, int> elemOnIndex(-1, 9999); 
+        std::pair<int, int> elemOnIndex(-1, 9999);
         // 最小値を線形探索
         for (int j = i; j < data.size(); ++j) {
             if (data[j] < elemOnIndex.second) {
@@ -42,7 +42,25 @@ void Sorter::selectSort() {
         // 交換
         auto tmp = data[i];
         data[i] = elemOnIndex.second;
-        data[elemOnIndex.first] = tmp;  
+        data[elemOnIndex.first] = tmp;
+    }
+    this->sortedData = data;
+}
+
+void Sorter::insertSort() {
+    std::vector<int> data;
+    // 元データが書き換わらないようにコピーを用意する
+    std::copy(this->data.begin(), this->data.end(), std::back_inserter(data));
+
+    for (int i = 1; i < data.size(); ++i) {
+        for (int j = i; j != 0; --j) {
+            // 左側から段々とソートされる
+            if (data[j - 1] > data[j]) {
+                auto tmp = data[j];
+                data[j] = data[j - 1];
+                data[j - 1] = tmp;
+            }
+        }
     }
     this->sortedData = data;
 }
@@ -50,13 +68,13 @@ void Sorter::selectSort() {
 // インプットデータをコンソールに表示する
 void Sorter::showInputData() {
     for (auto num : this->data) {
-        std::cout << num << std:: endl;
+        std::cout << num << std::endl;
     }
 }
 
 // ソート後のデータをコンソールに表示する
 void Sorter::showSortedData() {
     for (auto num : this->sortedData) {
-        std::cout << num << std:: endl;
+        std::cout << num << std::endl;
     }
 }

@@ -18,6 +18,7 @@ public:
     // ソート群
     void bubbleSort();
     void selectSort();
+    void insertSort();
 
     // 出力
     void showInputData();
@@ -30,4 +31,5 @@ Sorter::Sorter(std::vector<int> &data) {
 
 Sorter::~Sorter() {
     this->data.clear();
+    this->sortedData.clear();
 }

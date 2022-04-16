@@ -14,7 +14,9 @@ int main() {
     std::cout << std::endl;
     
     //sorter.bubbleSort();
-    sorter.selectSort();
+    //sorter.selectSort();
+    sorter.insertSort();
+
     sorter.showSortedData();
 
     return 0;
