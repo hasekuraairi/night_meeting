@@ -59,6 +59,8 @@ void Sorter::insertSort() {
                 auto tmp = data[j];
                 data[j] = data[j - 1];
                 data[j - 1] = tmp;
+            } else {
+                break;
             }
         }
     }
