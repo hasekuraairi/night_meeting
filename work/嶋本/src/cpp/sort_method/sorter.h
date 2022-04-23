@@ -19,6 +19,8 @@ public:
     void bubbleSort();
     void selectSort();
     void insertSort();
+    void margeSort(std::vector<int> &data, int left, int right);
+    //void quickSort(std::vector<int> &data, int left, int right);
 
     // 出力
     void showInputData();
@@ -27,6 +29,7 @@ public:
 
 Sorter::Sorter(std::vector<int> &data) {
     this->data = data;
+    this->sortedData = data;
 }
 
 Sorter::~Sorter() {

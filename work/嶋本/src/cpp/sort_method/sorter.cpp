@@ -53,30 +53,80 @@ void Sorter::insertSort() {
     std::copy(this->data.begin(), this->data.end(), std::back_inserter(data));
 
     for (int i = 1; i < data.size(); ++i) {
-        for (int j = i; j != 0; --j) {
+        // 挿入する要素
+        std::pair<int, int> insertElem(i, data[i]);
+        for (int j = i; j > 0; --j) {
             // 左側から段々とソートされる
-            if (data[j - 1] > data[j]) {
-                auto tmp = data[j];
+            if (data[j - 1] > insertElem.second) {
+                // 後ろにずらす
                 data[j] = data[j - 1];
-                data[j - 1] = tmp;
+                insertElem.first--;
             } else {
                 break;
             }
         }
+        // 要素を目的の場所に挿入
+        data[insertElem.first] = insertElem.second;
     }
+    this->sortedData = data;
+}
+
+// マージソート
+// 再帰処理でデータを分割していく
+// 分割し終えればソートして、マージしていく
+void Sorter::margeSort(std::vector<int> &data, int left, int right) {
+    // ベースケース
+    if (right - left == 1) {
+        return;
+    }
+
+    int mid = (right + left) / 2;
+    // 左半分をソート
+    margeSort(data, left, mid);
+    // 右半分をソート
+    margeSort(data, mid, right);
+
+    // 左ソートの結果と右ソートの結果をコピー
+    // 右ソートの結果は左右反転にしておくと、
+    // 先端と最端の比較することでソートができるようになる
+    std::vector<int> buf;
+    for (int i = left; i < mid; ++i) {
+        buf.push_back(data[i]);
+    }
+    for (int i = right - 1; i >= mid; --i) {
+        buf.push_back(data[i]);
+    }
+
+    // マージ処理
+    int indexLeft = 0;
+    int indexRight = buf.size() - 1;
+    for (int i = left; i < right; ++i) {
+        if (buf[indexLeft] <= buf[indexRight]) {
+            // 先端を採用
+            // インデックスは要素が代入されてから+1される
+            data[i] = buf[indexLeft++];
+        } else {
+            // 最端を採用
+            // インデックスは要素が代入されてから-1される
+            data[i] = buf[indexRight--];
+        }
+    }
+
     this->sortedData = data;
 }
 
 // インプットデータをコンソールに表示する
 void Sorter::showInputData() {
+    std::cout << "<--- Inputted Data --->" << std::endl;
     for (auto num : this->data) {
-        std::cout << num << std::endl;
+        std::cout << num << "  ";
     }
 }
 
 // ソート後のデータをコンソールに表示する
 void Sorter::showSortedData() {
+    std::cout << "<--- Sorted Data --->" << std::endl;
     for (auto num : this->sortedData) {
-        std::cout << num << std::endl;
+        std::cout << num << "  ";
     }
 }
