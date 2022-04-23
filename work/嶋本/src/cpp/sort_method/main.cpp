@@ -11,7 +11,7 @@ int main() {
     data.push_back(4);*/
 
     // 0 ~ 100までのランダムな数字を100個用意
-    std::vector<int> data(100000);
+    std::vector<int> data(100);
     std::srand(std::time(nullptr));
     const int MAX = 100;
     for (int i = 0; i < data.size(); ++i) {
@@ -21,7 +21,7 @@ int main() {
 
 
     Sorter sorter(data);
-    //sorter.showInputData();
+    sorter.showInputData();
     std::cout << std::endl;
 
     clock_t start = clock();
@@ -29,12 +29,13 @@ int main() {
     //sorter.bubbleSort();
     //sorter.selectSort();
     //sorter.insertSort();
-    sorter.margeSort(data, 0, data.size());
+    //sorter.margeSort(data, 0, data.size());
+    sorter.quickSort(data, 0, data.size());
 
     clock_t end = clock();
     auto time = (double)(end - start) / CLOCKS_PER_SEC;
 
-    //sorter.showSortedData();
+    sorter.showSortedData();
     std::cout << "time: " << time << " sec" << std::endl;
 
 

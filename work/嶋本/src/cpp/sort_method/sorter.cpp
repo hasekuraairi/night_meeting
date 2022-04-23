@@ -11,9 +11,7 @@ void Sorter::bubbleSort() {
             if (data[j] > data[j + 1]) {
                 // 隣同士の要素を 不等式, 左要素 <= 右要素 が
                 // 成り立つように交換
-                auto tmp = data[j + 1];
-                data[j + 1] = data[j];
-                data[j] = tmp;
+                swap(data[j + 1], data[j]);
             }
         }
     }
@@ -40,9 +38,7 @@ void Sorter::selectSort() {
         // 探索した最小値と
         // ソート確定前の一番小さいインデックスの要素を
         // 交換
-        auto tmp = data[i];
-        data[i] = elemOnIndex.second;
-        data[elemOnIndex.first] = tmp;
+        swap(data[i], data[elemOnIndex.first]);
     }
     this->sortedData = data;
 }
@@ -113,6 +109,46 @@ void Sorter::margeSort(std::vector<int> &data, int left, int right) {
     }
 
     this->sortedData = data;
+}
+
+// クイックソート
+void Sorter::quickSort(std::vector<int> &data, int left, int right) {
+    // ベースケース
+    if (right - left <= 1) {
+        return;
+    }
+
+    // pivotのインデックスは中点とする
+    int pivotIndex = (left + right) / 2;
+    // pivot（この値を基準にソートする）
+    int pivot = data[pivotIndex];
+
+    // 左側から比較するために最端にpivotを置いておく（番兵）
+    swap(data[pivotIndex], data[right - 1]);
+
+    int i = left;
+    for (int j = left; j < right - 1; ++j) {
+        if (data[j] < pivot) {
+            // pivot未満のものを左につめる
+            swap(data[i++], data[j]);
+        }
+    }
+    // pivotを適切な位置に挿入
+    swap(data[i], data[right - 1]);
+
+    // pivot未満をソート
+    quickSort(data, left, i);
+    // pivot以上をソート
+    quickSort(data, i + 1, right);
+
+    this->sortedData = data;
+}
+
+// ノードの交換用の関数
+void Sorter::swap(int &n, int &m) {
+    int tmp = n;
+    n = m;
+    m = tmp;
 }
 
 // インプットデータをコンソールに表示する

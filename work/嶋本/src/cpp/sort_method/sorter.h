@@ -11,6 +11,7 @@ class Sorter {
 private:
     std::vector<int> data;
     std::vector<int> sortedData;
+    void swap(int &n, int &m);
 public:
     Sorter(std::vector<int> &data);
     ~Sorter();
@@ -20,7 +21,7 @@ public:
     void selectSort();
     void insertSort();
     void margeSort(std::vector<int> &data, int left, int right);
-    //void quickSort(std::vector<int> &data, int left, int right);
+    void quickSort(std::vector<int> &data, int left, int right);
 
     // 出力
     void showInputData();
