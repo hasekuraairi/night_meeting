@@ -1,5 +1,6 @@
 #include "searcher.h"
 
+// ナイーブ法
 int Searcher::naiveMethod(std::string searchStr) {
     int count = 0;
     int fix = 0;
@@ -67,4 +68,13 @@ std::vector<int> Searcher::genKmpTable(std::string searchStr) {
     }
 
     return table;
+}
+
+std::vector<int> Searcher::genBmTable(std::string searchStr) {
+    int length = searchStr.length();
+    std::map<std::string, int> map;
+
+    
+
+    
 }

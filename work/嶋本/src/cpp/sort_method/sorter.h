@@ -22,6 +22,7 @@ public:
     void insertSort();
     void margeSort(std::vector<int> &data, int left, int right);
     void quickSort(std::vector<int> &data, int left, int right);
+    void shellSort();
 
     // 出力
     void showInputData();

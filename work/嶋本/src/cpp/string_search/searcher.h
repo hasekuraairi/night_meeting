@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include <map>
 #include <iostream>
 
 class Searcher {
@@ -12,6 +13,7 @@ public:
     int kmpMethod(std::string searchStr);
     int bmMethod(std::string searchStr);
     std::vector<int> genKmpTable(std::string searchStr);
+    std::vector<int> genBmTable(std::string searchStr);
     std::string getStr() {return str;}
 };
 

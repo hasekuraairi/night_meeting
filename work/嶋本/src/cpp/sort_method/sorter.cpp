@@ -144,6 +144,47 @@ void Sorter::quickSort(std::vector<int> &data, int left, int right) {
     this->sortedData = data;
 }
 
+// シェルソート
+void Sorter::shellSort() {
+    // 間隔
+    int h = 0;
+    int temp = 1;
+
+    do {
+        h = temp;
+        temp = 3 * temp + 1;
+    } while (temp < data.size());
+
+    while (h > 0) {
+        for (int i = 0; i < data.size() - h; ++i) {
+            std::pair<int, int> insertElem(i, data[i]);
+            for (int j = i + h; j > 0 && data[j - h] > data[j]; j -= h) {
+                // 左側から段々とソートされる
+                if (data[j - h] > insertElem.second) {
+                    // 後ろにずらす
+                    data[j] = data[j - h];
+                    insertElem.first--;
+                } else {
+                    break;
+                }
+            }
+            // 要素を目的の場所に挿入
+            data[insertElem.first] = insertElem.second;
+        }
+
+        // 間隔を狭くする
+        if ((h - 1) >= 3) {
+            h = (int)((h - 1) / 3);
+        } else if ((h - 1) > 0) {
+            h = 1;
+        } else {
+            break;
+        }
+    }
+
+    this->sortedData = data;
+}
+
 // ノードの交換用の関数
 void Sorter::swap(int &n, int &m) {
     int tmp = n;

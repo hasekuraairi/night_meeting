@@ -8,8 +8,8 @@ int main() {
     std::string searchStr;
     std::cin >> searchStr;
 
-    std::cout << searcher.naiveMethod(searchStr) << std::endl;
-    //std::cout << searcher.kmpMethod(searchStr) << std::endl;
+    //std::cout << searcher.naiveMethod(searchStr) << std::endl;
+    std::cout << searcher.kmpMethod(searchStr) << std::endl;
 
     return 0;
 }
