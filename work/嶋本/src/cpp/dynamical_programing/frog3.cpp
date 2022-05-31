@@ -2,6 +2,13 @@
 #include<vector>
 using namespace std;
 
+/**
+ * @brief 
+ * 
+ * @tparam T 
+ * @param a 
+ * @param b 
+ */
 template<class T> void chimin(T& a, T b) {
     if (a > b) {
         a = b;

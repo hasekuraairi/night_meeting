@@ -20,29 +20,28 @@ long long solveKnapsackProblem(vector<Goods> &goodsList, long long W,
     int N = goodsList.size();
     for (int i = 0; i < N; ++i) {       // 品物についてのループ
         for (int w = 0; w <= W; ++w) {  // 重量についてのループ
+        
             // i番目の品物を選ぶとき
             if (w >= goodsList[i].weight) {
+
+                // 個数制限があるとき
                 long long newElem = dp[i][w - goodsList[i].weight] + goodsList[i].value;
+
+                // 個数制限がないとき
+                // long long newElem = dp[i + 1][w - goodsList[i].weight] + goodsList[i].value;
+
                 if (dp[i + 1][w] < newElem) {
                     dp[i + 1][w] = newElem;
                     prevW[i + 1][w] = w - goodsList[i].weight;
                 }
-
-                //chmax(dp[i + 1][w],
-                //      dp[i][w - goodsList[i].weight] + goodsList[i].value);
-
-                // 個数制限がない時の場合
-                // chmax(dp[i + 1][w], dp[i + 1][w - goodsList[i].weight] +
-                // goodsList[i].value);
             }
 
+            // i番目の品物を選ばないとき
             if (dp[i + 1][w] < dp[i][w]) {
                 dp[i + 1][w] = dp[i][w];
                 prevW[i + 1][w] = w;
             }
 
-            // i番目の品物を選ばないとき
-            //chmax(dp[i + 1][w], dp[i][w]);
         }
     }
 
@@ -66,10 +65,12 @@ int main() {
 
     long long res = solveKnapsackProblem(goodsList, W, dp, prevW);
 
+    // 結果出力処理
     cout << "Max Value: " << res << endl;
 
-    int curWeight = W;
 
+    // 組み合わせ出力処理
+    int curWeight = W;
     for (int i = N - 1; i >= 0; --i) {
         // i番目の品物を選んでいた場合
         if (prevW[i + 1][curWeight] == curWeight - goodsList[i].weight) {
