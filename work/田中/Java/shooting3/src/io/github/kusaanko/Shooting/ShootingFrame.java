@@ -6,7 +6,7 @@ public class ShootingFrame extends JFrame {
     public ShootingFrame(){
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setTitle("shooting");
-        this.setSize(500,500);
+        this.setSize(600,600);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
